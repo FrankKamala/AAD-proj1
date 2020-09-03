@@ -11,5 +11,9 @@
 <com.google.android.material.tabs.TabLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/tabUp"/>
+    android:id="@+id/tabUp"
+    app:tabIndicatorColor="#000000"
+    app:tabTextColor="#ffffff"
+    app:tabSelectedTextColor="#ffffff"
+    android:background="@color/colorPrimary"/>
 </LinearLayout>
