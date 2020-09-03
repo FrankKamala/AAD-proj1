@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +60,15 @@ public class AFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false);
+
+
+        View view = inflater.inflate(R.layout.fragment_a, container, false);
+        TextView textV = view.findViewById(R.id.viewTexta);
+
+        String sTitle = getArguments().getString("title");
+
+        textV.setText((sTitle));
+
+        return view;
     }
 }

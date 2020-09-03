@@ -38,10 +38,24 @@ public class MainActivity extends AppCompatActivity {
 //        vp
 
         prepareViewPager(viewPager,marray);
+
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void prepareViewPager(ViewPager viewPager,ArrayList<String>marray) {
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager());
+
+        AFragment fragment = new AFragment();
+        for (int i=0;i<marray.size();i++){
+            Bundle b =new Bundle();
+            b.putString("title",marray.get(i));
+            fragment.setArguments(b);
+
+
+            adapter.addFragment(fragment,marray.get(i));
+            fragment=new AFragment();
+        }
+        viewPager.setAdapter(adapter);
     }
 
     private class MainAdapter  extends FragmentPagerAdapter {
