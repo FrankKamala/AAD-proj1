@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/sure "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="121dp"
+        android:layout_height="54dp"
         android:layout_marginTop="300dp"
         android:text="Are you Sure ?"
         app:layout_constraintEnd_toEndOf="parent"
