@@ -16,7 +16,7 @@ import java.util.List;
 public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHolder> {
     private List<Skill> skillList;
 
-    public SkillAdapter(List<Skill> invoiceList, Context context) {
+    public SkillAdapter(List<Skill> skillList, Context context) {
         this.skillList = skillList;
     }
     @NonNull
