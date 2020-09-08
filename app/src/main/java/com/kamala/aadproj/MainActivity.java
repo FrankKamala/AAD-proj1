@@ -8,7 +8,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabLayout;
@@ -19,11 +22,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
+    Button mSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mSwitch=findViewById(R.id.buttonFill);
 
         tabLayout= findViewById(R.id.tabUp);
         viewPager = findViewById(R.id.myPager);
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+
     private void prepareViewPager(ViewPager viewPager,ArrayList<String>marray) {
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager());
 
@@ -56,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
             fragment=new AFragment();
         }
         viewPager.setAdapter(adapter);
+    }
+
+    public void openForm(View view) {
+        Intent i = new Intent(this,Form.class);
+        startActivity(i);
     }
 
     private class MainAdapter  extends FragmentPagerAdapter {
