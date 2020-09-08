@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.kamala.aadproj.adapters.SkillAdapter;
 import com.kamala.aadproj.models.Skill;
 import com.kamala.aadproj.network.DetailApi;
@@ -62,11 +63,24 @@ public class FragmentSkill extends Fragment {
 
             @Override
             public void onFailure(Call<List<Skill>> call, Throwable t) {
+                showSnack();
 
             }
 
 
         });
 
+    }
+    private void showSnack() {
+        View rootView = root;
+        Snackbar snackbar = Snackbar.make(rootView,
+                "Network error!.", Snackbar.LENGTH_INDEFINITE);
+        snackbar.setActionTextColor(getResources().getColor(R.color.design_default_color_error));
+        snackbar.setAction("Please Retry", v -> {
+
+            loadDetails();
+            snackbar.dismiss();
+        });
+        snackbar.show();
     }
 }
