@@ -14,4 +14,5 @@ public interface DetailApi {
     @GET("skilliq")
     Call<List<Skill>>getDetailSkill();
 
+
 }
