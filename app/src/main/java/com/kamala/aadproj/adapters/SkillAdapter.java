@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,9 @@ import com.kamala.aadproj.R;
 import com.kamala.aadproj.models.Skill;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHolder> {
     private List<Skill> skillList;
@@ -29,11 +33,32 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHol
 
     @Override
     public void onBindViewHolder(@NonNull SkillAdapter.SkillViewHolder holder, int position) {
+        holder.bindSkill(skillList.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return skillList.size();
     }
+
+//    class
+    static class SkillViewHolder extends RecyclerView.ViewHolder{
+        //myViews
+        @BindView(R.id.nameSkill) TextView mName;
+         @BindView(R.id.skillScore) TextView mScore;
+        @BindView(R.id.countrySkill) TextView mCountry;
+
+    public SkillViewHolder(@NonNull View itemView) {
+
+        super(itemView);
+        ButterKnife.bind(this,itemView);
+    }
+    void bindSkill(Skill skill){
+
+        mName.setText(skill.getName());
+        mScore.setText(skill.getName());
+        mCountry.setText(skill.getName());
+    }
+}
 }
