@@ -65,9 +65,7 @@ public class AFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_a, container, false);
         TextView textV = view.findViewById(R.id.viewTexta);
 
-        String sTitle = getArguments().getString("title");
 
-        textV.setText((sTitle));
 
         return view;
     }

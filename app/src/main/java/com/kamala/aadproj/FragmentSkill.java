@@ -42,7 +42,7 @@ public class FragmentSkill extends Fragment {
 
     private void loadDetails() {
 
-        DetailApi service = (DetailApi) DetailClient.getClient().getDetailSkill();
+        DetailApi service = DetailClient.getClient();
         Call<List<Skill>> call = service.getDetailSkill();
         call.enqueue(new Callback<List<Skill>>() {
             @Override
@@ -51,8 +51,8 @@ public class FragmentSkill extends Fragment {
                     skills = response.body();
 
 
-                    sAdapter = new SkillAdapter(skills, root.getContext());
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false);
+                    sAdapter = new SkillAdapter(skills, getActivity());
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     mSkillRecycler.setLayoutManager(layoutManager);
                     mSkillRecycler.setHasFixedSize(true);
                     mSkillRecycler.setAdapter(sAdapter);
