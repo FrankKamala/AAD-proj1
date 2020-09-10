@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,8 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHol
         @BindView(R.id.nameSkill) TextView mName;
          @BindView(R.id.skillScore) TextView mScore;
         @BindView(R.id.countrySkill) TextView mCountry;
+    @BindView(R.id.badge)
+    ImageView mBadge;
 
     public SkillViewHolder(@NonNull View itemView) {
 
@@ -55,7 +58,7 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHol
         ButterKnife.bind(this,itemView);
     }
     void bindSkill(Skill skill){
-
+        Picasso.get().load(skill.getBadgeUrl()).into(mBadge);
         mName.setText(skill.getName());
         mScore.setText(skill.getName());
         mCountry.setText(skill.getName());
