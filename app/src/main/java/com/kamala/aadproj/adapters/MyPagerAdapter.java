@@ -1,4 +1,6 @@
 package com.kamala.aadproj.adapters;
 
-public class MyPagerAdapter {
+import androidx.fragment.app.FragmentPagerAdapter;
+
+public class MyPagerAdapter extends FragmentPagerAdapter {
 }

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabLayout;
+import com.kamala.aadproj.adapters.MyPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
