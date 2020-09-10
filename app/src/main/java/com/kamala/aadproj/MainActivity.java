@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout= findViewById(R.id.tabUp);
         viewPager = findViewById(R.id.myPager);
+        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
 
         ArrayList<String> marray = new ArrayList<>();
@@ -100,4 +102,6 @@ public class MainActivity extends AppCompatActivity {
             return mArrayList.get(position);
         }
     }
+
+
 }
