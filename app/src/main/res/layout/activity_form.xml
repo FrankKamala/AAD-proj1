@@ -8,10 +8,15 @@
     tools:context=".Form">
 
     <EditText
-        android:background="@drawable/names_bg"
         android:id="@+id/secondName"
-        android:layout_width="177dp"
-        android:layout_height="63dp"
+        android:layout_width="148dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+
+        android:layout_marginRight="10dp"
+        android:background="@drawable/names_bg"
         android:ems="10"
         android:hint="Second Name"
         android:inputType="textPersonName"
@@ -22,13 +27,13 @@
 
     <EditText
         android:id="@+id/firstName"
-        android:layout_width="177dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="151dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="108dp"
-        android:ems="10"
         android:background="@drawable/names_bg"
+        android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +43,8 @@
         android:id="@+id/subEmail"
         android:layout_width="273dp"
         android:layout_height="48dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/link_bg"
         android:ems="10"
         android:hint="Enter Your Email Address"
         android:inputType="textEmailAddress"
@@ -50,23 +56,27 @@
         android:id="@+id/subLink"
         android:layout_width="262dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/link_bg"
         android:ems="10"
         android:hint="Enter GitHubLink"
         android:inputType="textUri|textShortMessage|textLongMessage"
-        app:layout_constraintBottom_toTopOf="@+id/subButton"
         app:layout_constraintEnd_toEndOf="@+id/subEmail"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/subEmail" />
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/subEmail"
+        app:layout_constraintTop_toBottomOf="@+id/subEmail" />
 
     <Button
         android:id="@+id/subButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginBottom="30dp"
+        android:background="#FFA500"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subLink" />
 </androidx.constraintlayout.widget.ConstraintLayout>
