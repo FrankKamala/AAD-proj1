@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kamala.aadproj.R;
 import com.kamala.aadproj.models.Hours;
 import com.kamala.aadproj.models.Skill;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -49,15 +51,18 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.HoursViewHol
         TextView mName;
         @BindView(R.id.skillScore) TextView mScore;
         @BindView(R.id.countrySkill) TextView mCountry;
+        @BindView(R.id.badge)
+        ImageView mBadge;
         public HoursViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
 
         public void bindSkill(Hours hours) {
+            Picasso.get().load(hours.getBadgeUrl()).into(mBadge);
             mName.setText(hours.getName());
-            mScore.setText(hours.getName());
-            mCountry.setText(hours.getName());
+            mScore.setText(hours.getHours().toString());
+            mCountry.setText(hours.getCountry());
 
         }
     }

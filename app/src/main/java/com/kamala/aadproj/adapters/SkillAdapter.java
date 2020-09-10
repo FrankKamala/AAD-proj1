@@ -61,8 +61,8 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.SkillViewHol
     void bindSkill(Skill skill){
         Picasso.get().load(skill.getBadgeUrl()).into(mBadge);
         mName.setText(skill.getName());
-        mScore.setText(skill.getName());
-        mCountry.setText(skill.getName());
+        mScore.setText(skill.getScore().toString());
+        mCountry.setText(skill.getCountry());
     }
 }
 }
