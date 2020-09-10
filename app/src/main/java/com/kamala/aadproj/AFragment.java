@@ -3,11 +3,29 @@ package com.kamala.aadproj;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.kamala.aadproj.adapters.HoursAdapter;
+import com.kamala.aadproj.adapters.SkillAdapter;
+import com.kamala.aadproj.models.Hours;
+import com.kamala.aadproj.models.Skill;
+import com.kamala.aadproj.network.DetailApi;
+import com.kamala.aadproj.network.DetailClient;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,18 +73,69 @@ public class AFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    private HoursAdapter mLearnAdapter;
+    private List<Hours> mhours;
+    private View root;
+    @BindView(R.id.recycleHours)
+    RecyclerView mLearnRecycler;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
         View view = inflater.inflate(R.layout.fragment_a, container, false);
-        TextView textV = view.findViewById(R.id.viewTexta);
+
+        ButterKnife.bind(this, view);
+        loadLearners();
 
 
 
         return view;
     }
-}
+
+    private void loadLearners() {
+        DetailApi service = DetailClient.getClient();
+        Call<List<Hours>> call = service.getDetailHours();
+        call.enqueue(new Callback<List<Hours>>() {
+            @Override
+            public void onResponse(Call<List<Hours>> call, Response<List<Hours>> response) {
+                if (response.isSuccessful()) {
+                    mhours = response.body();
+
+
+                    mLearnAdapter = new HoursAdapter(mhours, getActivity());
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                    mLearnRecycler.setLayoutManager(layoutManager);
+                    mLearnRecycler.setHasFixedSize(true);
+                    mLearnRecycler.setAdapter(mLearnAdapter);
+                    mLearnAdapter.notifyDataSetChanged();
+                }
+            }
+
+
+
+            @Override
+            public void onFailure(Call<List<Hours>> call, Throwable t) {
+                showSnack();
+
+            }
+
+
+        });
+
+    }
+    private void showSnack() {
+        View rootView = root;
+        Snackbar snackbar = Snackbar.make(rootView,
+                "Network error!.", Snackbar.LENGTH_INDEFINITE);
+        snackbar.setActionTextColor(getResources().getColor(R.color.design_default_color_error));
+        snackbar.setAction("Please Retry", v -> {
+
+            loadLearners();
+            snackbar.dismiss();
+        });
+        snackbar.show();
+    }
+
+
+    }
