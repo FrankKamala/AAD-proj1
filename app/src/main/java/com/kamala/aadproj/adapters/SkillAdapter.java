@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kamala.aadproj.R;
 import com.kamala.aadproj.models.Skill;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
